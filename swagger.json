@@ -1,0 +1,80 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Express API",
+        "version": "1.0.0",
+        "description": "A sample API for learning Express"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Local development server"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Wellcome to our shop",
+                "responses": {
+                    "200": {
+                        "description": "Wellcome to our shop",
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product": {
+            "get": {
+                "summary": "Returns a product with the specified ешеду and price",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "The product's title",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "The product's price",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns a product with the specified title and price",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "product_title": {
+                                            "type": "string",
+                                            "description": "The product's title"
+                                        },
+                                        "product_price": {
+                                            "type": "string",
+                                            "description": "The product's' price"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
